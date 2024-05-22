@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>ItStep</title>
+    <style>
+        .user-info {
+            padding: 8px;
+            border: 1px #ccc solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"> </div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const user = {
+            text: `
+    ## Приготовление теста:
+
+    1. Просеять муку горкой в миску или на разделочную доску.
+    2. Сделать углубление в центре.
+    3. Разбить яйцо, добавить щепотку соли и разболтать вилкой.
+    4. Небольшими порциями, вливая молоко с водой, замесить тесто.
+    5. Скатать тесто в шар, завернуть в пищевую пленку и оставить на 40-60 минут при комнатной температуре.
+
+    ## Приготовление начинки:
+
+    1. Мясо вымыть, обсушить и нарезать крупными кубиками.
+    2. Лук очистить и разрезать на 2-4 части.
+    3. Пропустить мясо вместе с луком через мясорубку.
+    4. Добавить соль, перец и хорошо перемешать.
+
+    ## Формирование пельменей:
+
+    1. Тесто разделить на несколько частей.
+    2. Раскатать тесто в тонкий пласт.
+    3. Вырезать кружочки из теста.
+    4. В центр каждого кружочка положить немного фарша.
+    5. Соединить края кружочка, защипнув их.
+    6. Заморозить пельмени или сразу отварить.
+
+    ## Варка пельменей:
+
+    1. Налить воду в кастрюлю, посолить, добавить лавровый лист и перец.
+    2. Довести воду до кипения.
+    3. Опустить пельмени в кипящую воду.
+    4. Варить 7-10 минут, пока пельмени не всплывут.
+    5. Шумовкой вынуть пельмени из воды.
+    6. Подавать со сметаной, сливочным маслом или другим соусом.
+  `,
+            name: 'Домашние пельмени',
+            ingredients: ['мука', 'молоко', 'вода', 'яйцо', 'соль', 'свинина (с жирком)', 'говядина', 'лук репчатый', 'соль крупная', 'свежемолотый перец'],
+            counter: ['4 стакана', '100 мл', '100 мл', '1 шт', '1 ч.л.', '600 г', '400 г', '3 шт', '1-1,5 ч.л.', 'По ощущениям'],
+            photo: '3.jpg',
+            getFullName: function () {
+                return `${this.text} ${this.name}`;
+            }
+        };
+        const userClassName = "user-info";
+        const styleObj = {
+            fontFamily: "Montserat",
+            fontSize: "16px",
+            lineHeight: "1.5",
+        };
+        ReactDOM
+            .createRoot(document.getElementById("app"))
+            .render(
+                <div className={userClassName} style={styleObj}>
+
+                    <h1>Название блюда: {user.name}</h1>
+                    <p>Алгоритм приготовления: {user.text}</p>
+                    <h2>Ингредиенты:</h2>
+                    <ul>
+                        {user.ingredients.map((ingredient, index) => (
+                            <li key={index}>{ingredient}</li>
+                        ))}
+                    </ul>
+                    <h2>Количество:</h2>
+                    <ul>
+                        {user.counter.map((amount, index) => (
+                            <li key={index}>{amount}</li>
+                        ))}
+                    </ul>
+                    <img src={user.photo} alt="" srcset="" key="user-photo" />
+                </div>
+            );
+
+    </script>
+</body>
+
+</html>
